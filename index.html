@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的个人导航页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft Yahei", sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .nav-group {
+      margin-bottom: 30px;
+    }
+
+    .nav-group h2 {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 15px;
+      padding-left: 10px;
+      border-left: 4px solid #409eff;
+    }
+
+    .nav-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+    }
+
+    .nav-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px 10px;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: all 0.2s ease;
+    }
+
+    .nav-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      color: #409eff;
+    }
+
+    .nav-item .icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .nav-item .name {
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #999;
+      font-size: 12px;
+      padding-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>我的常用导航</h1>
+      <p>简洁高效 · 一键直达</p>
+    </header>
+
+    <div class="nav-group">
+      <h2>常用网站</h2>
+      <div class="nav-list">
+        <a href="https://www.baidu.com" class="nav-item" target="_blank">
+          <div class="icon">🔍</div>
+          <div class="name">百度</div>
+        </a>
+        <a href="https://www.bilibili.com" class="nav-item" target="_blank">
+          <div class="icon">📺</div>
+          <div class="name">哔哩哔哩</div>
+        </a>
+        <a href="https://www.zhihu.com" class="nav-item" target="_blank">
+          <div class="icon">💬</div>
+          <div class="name">知乎</div>
+        </a>
+        <a href="https://github.com" class="nav-item" target="_blank">
+          <div class="icon">🐱</div>
+          <div class="name">GitHub</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <h2>工具类</h2>
+      <div class="nav-list">
+        <a href="https://docs.qq.com" class="nav-item" target="_blank">
+          <div class="icon">📝</div>
+          <div class="name">在线文档</div>
+        </a>
+        <a href="https://www.123pan.com" class="nav-item" target="_blank">
+          <div class="icon">📁</div>
+          <div class="name">123云盘</div>
+        </a>
+        <a href="https://www.processon.com" class="nav-item" target="_blank">
+          <div class="icon">📊</div>
+          <div class="name">流程图</div>
+        </a>
+        <a href="https://www.canva.cn" class="nav-item" target="_blank">
+          <div class="icon">🎨</div>
+          <div class="name">设计</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <h2>生活娱乐</h2>
+      <div class="nav-list">
+        <a href="https://music.163.com" class="nav-item" target="_blank">
+          <div class="icon">🎵</div>
+          <div class="name">网易云音乐</div>
+        </a>
+        <a href="https://www.iqiyi.com" class="nav-item" target="_blank">
+          <div class="icon">🎬</div>
+          <div class="name">爱奇艺</div>
+        </a>
+        <a href="https://www.taobao.com" class="nav-item" target="_blank">
+          <div class="icon">🛒</div>
+          <div class="name">淘宝</div>
+        </a>
+        <a href="https://www.thepaper.cn" class="nav-item" target="_blank">
+          <div class="icon">📰</div>
+          <div class="name">澎湃新闻</div>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      © 2026 我的导航页 · 基于GitHub Pages搭建
+    </footer>
+  </div>
+</body>
+</html>
