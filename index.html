@@ -1,73 +1,263 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我们的情侣纪念站</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#ffb6c1,#ffcccc,#f8c8dc);min-height:100vh;overflow-x:hidden}
-.wrap{max-width:600px;margin:0 auto;padding:0 20px}
-.header{text-align:center;padding:55px 0 30px;color:#fff}
-.header h1{font-size:27px;margin-bottom:10px}
-.time{background:rgba(255,255,255,0.3);backdrop-filter:blur(8px);border-radius:18px;padding:22px;text-align:center;color:#fff;font-size:18px;margin-bottom:28px}
-.card{background:rgba(255,255,255,0.92);border-radius:18px;padding:25px;margin-bottom:22px}
-.card h2{font-size:21px;color:#ff5a7a;margin-bottom:14px}
-.card p{line-height:1.8;font-size:15px;color:#333}
-.footer{text-align:center;padding:35px 0;color:#fff;font-size:14px}
-.heart{position:fixed;pointer-events:none;color:#ff8da1;font-size:16px;animation:fall linear forwards}
-@keyframes fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:.8}100%{transform:translateY(100vh) rotate(360deg);opacity:0}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🫙小瓶子 & 🐙章鱼 | 我们的樱花故事</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 樱花背景 */
+        .bg-container {
+            width: 100%;
+            height: 45vh;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,200,220,0.6) 100%),
+                        linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 樱花飘落特效 */
+        .sakura {
+            position: absolute;
+            top: -10px;
+            color: #ffb7c5;
+            font-size: 20px;
+            opacity: 0.8;
+            animation: fall linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 头像和昵称 */
+        .profile-area {
+            position: absolute;
+            bottom: 80px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .nickname {
+            font-size: 12px;
+            color: #333;
+            text-align: center;
+            margin-top: 6px;
+        }
+
+        .heart-icon {
+            font-size: 24px;
+            color: #ff5a7a;
+        }
+
+        /* 波浪过渡 */
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #fff;
+            clip-path: ellipse(100% 60px at 50% 100%);
+        }
+
+        /* 计时区域 */
+        .time-section {
+            background: linear-gradient(180deg, #fff 0%, #ffe6ed 100%);
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .time-title {
+            font-size: 14px;
+            color: #995588;
+            margin-bottom: 8px;
+        }
+
+        #love-timer {
+            font-size: 16px;
+            color: #ff5a7a;
+            font-weight: bold;
+        }
+
+        /* 功能模块 */
+        .modules-container {
+            background: #ffe6ed;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .module-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .module-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .module-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .module-title {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .module-desc {
+            font-size: 10px;
+            color: #999;
+        }
+
+        /* 底部 */
+        .footer {
+            background: #ffe6ed;
+            text-align: center;
+            padding: 30px 20px;
+            color: #995588;
+            font-size: 13px;
+        }
+    </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="header">
-    <h1>执子之手-与子偕老</h1>
-    <p>我们的专属小世界</p>
-  </div>
+    <!-- 樱花背景区域 -->
+    <div class="bg-container">
+        <!-- 樱花花瓣会通过JS动态生成 -->
+        <div class="profile-area">
+            <div>
+                <div class="avatar">🫙</div>
+                <div class="nickname">小瓶子</div>
+            </div>
+            <div class="heart-icon">❤️</div>
+            <div>
+                <div class="avatar">🐙</div>
+                <div class="nickname">章鱼</div>
+            </div>
+        </div>
+        <div class="wave-divider"></div>
+    </div>
 
-  <div class="time">
-    相遇时光：<span id="timer"></span>
-  </div>
+    <!-- 计时区域 -->
+    <div class="time-section">
+        <div class="time-title">今天，是我们在一起的</div>
+        <div id="love-timer"></div>
+    </div>
 
-  <div class="card">
-    <h2>关于我们</h2>
-    <p>二零二三年正月初一，我们的故事正式开始。人海茫茫，有幸相遇，温柔是你，欢喜是你，往后余生，万般皆你。</p>
-  </div>
+    <!-- 功能模块区域 -->
+    <div class="modules-container">
+        <div class="module-card">
+            <div class="module-icon">💌</div>
+            <div class="module-title">祝福语</div>
+            <div class="module-desc">写下对我们的祝福</div>
+        </div>
+        <div class="module-card">
+            <div class="module-icon">📒</div>
+            <div class="module-title">点点滴滴</div>
+            <div class="module-desc">记录你我生活</div>
+        </div>
+        <div class="module-card">
+            <div class="module-icon">📋</div>
+            <div class="module-title">爱情清单</div>
+            <div class="module-desc">甜蜜瞬间有你陪伴</div>
+        </div>
+        <div class="module-card">
+            <div class="module-icon">📷</div>
+            <div class="module-title">时光相册</div>
+            <div class="module-desc">留住你我记忆</div>
+        </div>
+        <div class="module-card">
+            <div class="module-icon">🌳</div>
+            <div class="module-title">爱情树</div>
+            <div class="module-desc">一起成长</div>
+        </div>
+        <div class="module-card">
+            <div class="module-icon">👫</div>
+            <div class="module-title">关于我们</div>
+            <div class="module-desc">我们的经历</div>
+        </div>
+    </div>
 
-  <div class="card">
-    <h2>往后余生</h2>
-    <p>小瓶子会一直陪着章鱼，岁岁年年，朝朝暮暮，三餐四季，永不缺席。所有温柔与偏爱，都只属于你。</p>
-  </div>
+    <!-- 底部 -->
+    <div class="footer">
+        始于2023年正月初一 · 爱永不落幕
+    </div>
 
-  <div class="footer">
-    🫙小瓶子 ❤️ 🐙章鱼 · 永远在一起
-  </div>
-</div>
+    <script>
+        // 相识时间：2023-01-22 00:00:00（农历正月初一）
+        const meetTime = new Date('2023-01-22 00:00:00').getTime();
 
-<script>
-const start = new Date("2023-01-22 00:00:00").getTime();
-function update(){
-  const now = Date.now();
-  const diff = now - start;
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  document.getElementById("timer").innerText = d+"天 "+h+"时 "+m+"分 "+s+"秒";
-}
-setInterval(update,1000);update();
+        // 实时更新计时
+        function updateTimer() {
+            const now = Date.now();
+            const diff = now - meetTime;
 
-function createHeart(){
-  const h = document.createElement("div");
-  h.className="heart";
-  h.innerText="💘";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(Math.random()*4+5)+"s";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),8000);
-}
-setInterval(createHeart,350);
-</script>
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('love-timer').innerText = `第 ${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // 樱花飘落特效
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.className = 'sakura';
+            sakura.innerText = '🌸';
+            sakura.style.left = Math.random() * 100 + 'vw';
+            sakura.style.fontSize = (Math.random() * 15 + 10) + 'px';
+            sakura.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            document.querySelector('.bg-container').appendChild(sakura);
+            setTimeout(() => sakura.remove(), 10000);
+        }
+        setInterval(createSakura, 300);
+    </script>
 </body>
 </html>
