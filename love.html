@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我们的情侣纪念站</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#ffb6c1,#ffcccc,#f8c8dc);min-height:100vh;overflow-x:hidden}
+.wrap{max-width:600px;margin:0 auto;padding:0 20px}
+.header{text-align:center;padding:55px 0 30px;color:#fff}
+.header h1{font-size:27px;margin-bottom:10px}
+.time{background:rgba(255,255,255,0.3);backdrop-filter:blur(8px);border-radius:18px;padding:22px;text-align:center;color:#fff;font-size:18px;margin-bottom:28px}
+.card{background:rgba(255,255,255,0.92);border-radius:18px;padding:25px;margin-bottom:22px}
+.card h2{font-size:21px;color:#ff5a7a;margin-bottom:14px}
+.card p{line-height:1.8;font-size:15px;color:#333}
+.footer{text-align:center;padding:35px 0;color:#fff;font-size:14px}
+.heart{position:fixed;pointer-events:none;color:#ff8da1;font-size:16px;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:.8}100%{transform:translateY(100vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>执子之手-与子偕老</h1>
+    <p>我们的专属小世界</p>
+  </div>
+
+  <div class="time">
+    相遇时光：<span id="timer"></span>
+  </div>
+
+  <div class="card">
+    <h2>关于我们</h2>
+    <p>二零二三年正月初一，我们的故事正式开始。人海茫茫，有幸相遇，温柔是你，欢喜是你，往后余生，万般皆你。</p>
+  </div>
+
+  <div class="card">
+    <h2>往后余生</h2>
+    <p>小瓶子会一直陪着章鱼，岁岁年年，朝朝暮暮，三餐四季，永不缺席。所有温柔与偏爱，都只属于你。</p>
+  </div>
+
+  <div class="footer">
+    🫙小瓶子 ❤️ 🐙章鱼 · 永远在一起
+  </div>
+</div>
+
+<script>
+const start = new Date("2023-01-22 00:00:00").getTime();
+function update(){
+  const now = Date.now();
+  const diff = now - start;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById("timer").innerText = d+"天 "+h+"时 "+m+"分 "+s+"秒";
+}
+setInterval(update,1000);update();
+
+function createHeart(){
+  const h = document.createElement("div");
+  h.className="heart";
+  h.innerText="💘";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(Math.random()*4+5)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+}
+setInterval(createHeart,350);
+</script>
+</body>
+</html>
