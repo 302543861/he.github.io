@@ -1,338 +1,73 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HE-Png</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Microsoft Yahei", sans-serif;
-    }
-
-    body {
-      background-color: #f5f7fa;
-      padding: 20px;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* 顶部信息栏 */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 30px;
-      padding: 15px 20px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-
-    .datetime-box {
-      text-align: center;
-    }
-
-    #time {
-      font-size: 32px;
-      color: #333;
-      font-weight: bold;
-    }
-
-    #date {
-      font-size: 14px;
-      color: #666;
-      margin-top: 5px;
-    }
-
-    .weather-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #444;
-    }
-
-    .weather-icon {
-      font-size: 30px;
-    }
-
-    .weather-info .city {
-      font-size: 14px;
-      color: #666;
-    }
-
-    .weather-info .temp {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    /* 搜索栏 */
-    .search-box {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 40px;
-    }
-
-    .search-form {
-      display: flex;
-      width: 100%;
-      max-width: 600px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      border-radius: 25px;
-      overflow: hidden;
-    }
-
-    .search-input {
-      flex: 1;
-      padding: 12px 20px;
-      border: none;
-      outline: none;
-      font-size: 16px;
-    }
-
-    .search-btn {
-      background: #409eff;
-      color: #fff;
-      border: none;
-      padding: 0 25px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.2s;
-    }
-
-    .search-btn:hover {
-      background: #3a8ee6;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    header h1 {
-      font-size: 28px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      color: #666;
-      font-size: 14px;
-    }
-
-    .nav-group {
-      margin-bottom: 30px;
-    }
-
-    .nav-group h2 {
-      font-size: 18px;
-      color: #444;
-      margin-bottom: 15px;
-      padding-left: 10px;
-      border-left: 4px solid #409eff;
-    }
-
-    .nav-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 15px;
-    }
-
-    .nav-item {
-      background: #fff;
-      border-radius: 10px;
-      padding: 16px 10px;
-      text-align: center;
-      text-decoration: none;
-      color: #333;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      transition: all 0.2s ease;
-    }
-
-    .nav-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      color: #409eff;
-    }
-
-    .nav-item .icon {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    .nav-item .name {
-      font-size: 14px;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 60px;
-      color: #999;
-      font-size: 12px;
-      padding-bottom: 20px;
-    }
-
-    /* 响应式适配 */
-    @media (max-width: 768px) {
-      .top-bar {
-        flex-direction: column;
-        text-align: center;
-      }
-      #time {
-        font-size: 24px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我们的情侣纪念站</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#ffb6c1,#ffcccc,#f8c8dc);min-height:100vh;overflow-x:hidden}
+.wrap{max-width:600px;margin:0 auto;padding:0 20px}
+.header{text-align:center;padding:55px 0 30px;color:#fff}
+.header h1{font-size:27px;margin-bottom:10px}
+.time{background:rgba(255,255,255,0.3);backdrop-filter:blur(8px);border-radius:18px;padding:22px;text-align:center;color:#fff;font-size:18px;margin-bottom:28px}
+.card{background:rgba(255,255,255,0.92);border-radius:18px;padding:25px;margin-bottom:22px}
+.card h2{font-size:21px;color:#ff5a7a;margin-bottom:14px}
+.card p{line-height:1.8;font-size:15px;color:#333}
+.footer{text-align:center;padding:35px 0;color:#fff;font-size:14px}
+.heart{position:fixed;pointer-events:none;color:#ff8da1;font-size:16px;animation:fall linear forwards}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:.8}100%{transform:translateY(100vh) rotate(360deg);opacity:0}}
+</style>
 </head>
 <body>
-  <div class="container">
-    <!-- 顶部时间+地区欢迎语 -->
-    <div class="top-bar">
-      <div class="datetime-box">
-        <div id="time">--:--:--</div>
-        <div id="date">--年--月--日 星期--</div>
-      </div>
-      <div class="weather-box">
-        <div class="weather-icon">😊</div>
-        <div class="weather-info">
-          <div class="city">正在获取地区</div>
-          <div class="temp">欢迎使用</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 百度搜索栏 -->
-    <div class="search-box">
-      <form class="search-form" action="https://www.baidu.com/s" target="_blank">
-        <input type="text" name="wd" class="search-input" placeholder="百度一下，你就知道">
-        <button type="submit" class="search-btn">搜索</button>
-      </form>
-    </div>
-
-    <header>
-      <h1>HE-Png</h1>
-      <p>简洁高效 · 一键直达</p>
-    </header>
-
-    <div class="nav-group">
-      <h2>我的网站</h2>
-      <div class="nav-list">
-        <a href="https://esxi.2023111.xyz" class="nav-item" target="_blank">
-          <div class="icon">🖥️</div>
-          <div class="name">ESXI</div>
-        </a>
-        <a href="https://nas.2023111.xyz" class="nav-item" target="_blank">
-          <div class="icon">💾</div>
-          <div class="name">飞牛NAS</div>
-        </a>
-        <a href="https://www.2023111.xyz" class="nav-item" target="_blank">
-          <div class="icon">📖</div>
-          <div class="name">博客</div>
-        </a>
-        <a href="https://hp.2023111.xyz" class="nav-item" target="_blank">
-          <div class="icon">⚙️</div>
-          <div class="name">VPro</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="nav-group">
-      <h2>搜索引擎</h2>
-      <div class="nav-list">
-        <a href="https://www.baidu.com" class="nav-item" target="_blank">
-          <div class="icon">🔴</div>
-          <div class="name">百度</div>
-        </a>
-        <a href="https://www.bing.com" class="nav-item" target="_blank">
-          <div class="icon">🔵</div>
-          <div class="name">必应</div>
-        </a>
-        <a href="https://www.sogou.com" class="nav-item" target="_blank">
-          <div class="icon">🟢</div>
-          <div class="name">搜狗</div>
-        </a>
-        <a href="https://www.google.com" class="nav-item" target="_blank">
-          <div class="icon">🟠</div>
-          <div class="name">谷歌</div>
-        </a>
-      </div>
-    </div>
-
-    <div class="nav-group">
-      <h2>生活娱乐</h2>
-      <div class="nav-list">
-        <a href="https://music.163.com" class="nav-item" target="_blank">
-          <div class="icon">🎵</div>
-          <div class="name">网易云音乐</div>
-        </a>
-        <a href="https://www.iqiyi.com" class="nav-item" target="_blank">
-          <div class="icon">🎬</div>
-          <div class="name">爱奇艺</div>
-        </a>
-        <a href="https://www.taobao.com" class="nav-item" target="_blank">
-          <div class="icon">🛒</div>
-          <div class="name">淘宝</div>
-        </a>
-        <a href="https://www.thepaper.cn" class="nav-item" target="_blank">
-          <div class="icon">📰</div>
-          <div class="name">澎湃新闻</div>
-        </a>
-      </div>
-    </div>
-
-    <footer>
-      © 站长 · 小瓶子<br>
-      <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#999;text-decoration:none;">蜀ICP备2025146942号</a>
-    </footer>
+<div class="wrap">
+  <div class="header">
+    <h1>执子之手-与子偕老</h1>
+    <p>我们的专属小世界</p>
   </div>
 
-  <script>
-    // 实时时间+日期
-    function updateDateTime() {
-      const now = new Date();
-      const timeEl = document.getElementById('time');
-      const dateEl = document.getElementById('date');
-      const weekArr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+  <div class="time">
+    相遇时光：<span id="timer"></span>
+  </div>
 
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      timeEl.textContent = `${hours}:${minutes}:${seconds}`;
+  <div class="card">
+    <h2>关于我们</h2>
+    <p>二零二三年正月初一，我们的故事正式开始。人海茫茫，有幸相遇，温柔是你，欢喜是你，往后余生，万般皆你。</p>
+  </div>
 
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, '0');
-      const day = String(now.getDate()).padStart(2, '0');
-      const week = weekArr[now.getDay()];
-      dateEl.textContent = `${year}年${month}月${day}日 ${week}`;
-    }
+  <div class="card">
+    <h2>往后余生</h2>
+    <p>小瓶子会一直陪着章鱼，岁岁年年，朝朝暮暮，三餐四季，永不缺席。所有温柔与偏爱，都只属于你。</p>
+  </div>
 
-    updateDateTime();
-    setInterval(updateDateTime, 1000);
+  <div class="footer">
+    🫙小瓶子 ❤️ 🐙章鱼 · 永远在一起
+  </div>
+</div>
 
-    // 获取IP地区 + 显示欢迎语
-    async function showAreaWelcome() {
-      try {
-        let res = await fetch('https://ipapi.co/json/');
-        let data = await res.json();
-        let city = data.city || data.region || '未知地区';
-        
-        document.querySelector('.weather-info .city').textContent = city;
-        document.querySelector('.weather-info .temp').textContent = '欢迎使用';
-      } catch (e) {
-        document.querySelector('.weather-info .city').textContent = '宜宾';
-        document.querySelector('.weather-info .temp').textContent = '欢迎使用';
-      }
-    }
+<script>
+const start = new Date("2023-01-22 00:00:00").getTime();
+function update(){
+  const now = Date.now();
+  const diff = now - start;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById("timer").innerText = d+"天 "+h+"时 "+m+"分 "+s+"秒";
+}
+setInterval(update,1000);update();
 
-    showAreaWelcome();
-  </script>
+function createHeart(){
+  const h = document.createElement("div");
+  h.className="heart";
+  h.innerText="💘";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(Math.random()*4+5)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+}
+setInterval(createHeart,350);
+</script>
 </body>
 </html>
